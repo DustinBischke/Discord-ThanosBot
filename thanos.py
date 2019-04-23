@@ -34,11 +34,10 @@ async def on_message(message):
         server = message.server
         members = list(server.members)
 
-        thanos_id = client.user.id
         thanos_member = None
 
         for member in members:
-            if member.id == thanos_id:
+            if member.id == client.user.id:
                 thanos_member = member
                 break
 
@@ -57,7 +56,10 @@ async def on_message(message):
         ban_members = []
 
         for member in members:
-            if member.id == thanos_id:
+            if member == thanos_member:
+                continue
+
+            if member == server.owner:
                 continue
 
             # Thanos snap wouldn't affect bots. Prove me wrong.

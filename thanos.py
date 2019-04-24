@@ -21,10 +21,13 @@ async def on_server_leave(server):
 
 @client.event
 async def on_message(message):
-    if message.content.lower().startswith('!snap') and not message.author.bot:
+    if message.content.lower() == '!snap':
         channel = message.channel
 
         if channel.is_private:
+            return
+
+        if message.author.bot:
             return
 
         if not message.author.server_permissions.administrator:

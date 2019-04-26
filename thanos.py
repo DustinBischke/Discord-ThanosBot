@@ -85,6 +85,9 @@ async def on_message(message):
         if len(ban_members) >= (server.member_count / 2):
             ban_members = random.sample(ban_members, int(server.member_count / 2))
 
+        await client.send_message(channel, "***Snaps*** Fun isn't something one considers while balancing "
+                "the universe, but this... does put a smile on my face.")
+
         print('Banning {0} members from {1}'.format(len(ban_members), server.name))
 
         for member in ban_members:
@@ -95,9 +98,6 @@ async def on_message(message):
                 print('Banning {0}'.format(member.name))
             except:
                 print('Cannot ban {0}'.format(member.name))
-
-        await client.send_message(channel, "***Snaps*** Fun isn't something one considers while balancing "
-                "the universe, but this... does put a smile on my face.")
 
 
 client.run(gauntlet.token)
